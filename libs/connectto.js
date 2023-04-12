@@ -1,13 +1,15 @@
 const fs = require("fs");
 
-function senddata(data, datanumber) {
+function runCplusplus(code) {
     fs.mkdirSync("connectto_files");
-    fs.writeFileSync("connectto_files/cpptojsdatatransfer" + datanumber + ".ctto", data);
+    fs.writeFileSync("connectto_files/runtimecppCode.cpp", code);
+    const execSync = require('child_process').execSync;
+    const compilerErrors = execSync("g++ connectto_files/runtimecppCode.cpp -o connectoOutput");
+    if (process.platform == "win32") {
+        const runtime = execSync("./connectoOutput.exe");
+    } else {
+        const runtime = execSync("./connectoOutput");
+    }
 }
 
-function getdata(datanumber) {
-    var fileRead = fs.readFileSync("connectto_files/cpptojsdatatransfer" + datanumber + ".ctto", "utf-8");
-    return fileRead;
-}
-
-module.exports = { senddata, getdata }
+module.exports = { runCplusplus }
