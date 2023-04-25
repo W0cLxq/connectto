@@ -29,8 +29,12 @@ Send and Get
 JS:
 
 ```js
-connectto.senddata("hello", "1");
-connectto.getdata("2");
+connectto.runCplusplus(`
+#include <iostream>
+int main() {
+    std::cout << "hello world";
+}
+`);
 ```
 
 C++ :
