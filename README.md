@@ -19,7 +19,7 @@ const connectto = require("./libs/connectto);
 Connect with C++
 
 ```cpp
-#include "libs/connectto.hpp"
+#include "libs/connectto.cpp"
 ```
 
 - Step 3
@@ -36,8 +36,7 @@ connectto.getdata("2");
 C++ :
 
 ```cpp
-senddata("world", "2");
-getdata("1");
+runJS("console.log('hello world')");
 ```
 
 - Step 4
